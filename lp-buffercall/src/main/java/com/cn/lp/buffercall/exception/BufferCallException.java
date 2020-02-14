@@ -3,7 +3,6 @@ package com.cn.lp.buffercall.exception;
 /**
  * 缓冲调用异常
  * @author qirong
- * @date 2019/5/5
  */
 public class BufferCallException extends RuntimeException {
 

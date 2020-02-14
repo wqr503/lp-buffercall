@@ -8,7 +8,6 @@ import java.util.concurrent.*;
  * 缓冲调用执行者
  *
  * @author qirong
- * @date 2019/5/5
  */
 public class BufferCallActuator {
 

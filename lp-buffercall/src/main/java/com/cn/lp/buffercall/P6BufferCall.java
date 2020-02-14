@@ -3,7 +3,6 @@ package com.cn.lp.buffercall;
 /**
  * 6个参数调用
  * @author qirong
- * @date 2019/5/5
  */
 public interface P6BufferCall<T, P1, P2, P3, P4, P5, P6> {
 

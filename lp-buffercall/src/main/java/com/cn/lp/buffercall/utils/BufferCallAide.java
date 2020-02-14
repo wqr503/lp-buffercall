@@ -5,7 +5,6 @@ import java.util.Collection;
 /**
  * 缓冲调用工具
  * @author qirong
- * @date 2019/5/5
  */
 public class BufferCallAide {
 
