@@ -1,36 +1,43 @@
 # lp-buffercall
 
 #### Description
-java脑洞-缓冲调用
+Aggregate multiple requests for a single call, Usage scenarios :
+1. Paging query
+2. Sharing the cache pressure, cache failure can lead to a large number of requests to downstream services, leading to avalanches, buffering calls can effectively peak-clipping
 
 #### Software Architecture
-Software architecture description
+1. lp-buffercall the core logic of the buffercall
+2. lp-buffercall-spring Use BufferCall based on annotations
 
-#### Installation
+#### call the process
+![image.png](https://upload-images.jianshu.io/upload_images/17317532-c1a44a6ef3e47757.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-1. xxxx
-2. xxxx
-3. xxxx
+#### Key Annotations
 
-#### Instructions
+    @BufferCall - use on buffercall method
 
-1. xxxx
-2. xxxx
-3. xxxx
+    @CallKey - use on buffercall method params to create the method only key
 
-#### Contribution
+#### Attention
+1. The buffercall returns the same object, modify object must carefully
+2. if method params not has @CallKey annotation, method only key will Built from all method parameters, so @CallKey annotation not must need
 
-1. Fork the repository
-2. Create Feat_xxx branch
-3. Commit your code
-4. Create Pull Request
+#### demo
+```
+@Component
+public class TestService {
+
+    @BufferCall
+    public String testCallOneCallKey(@CallKey String name) {
+        return name + "- Hello !";
+    }
+    
+    @BufferCall
+    public String testCallNoCallKey(String name) {
+        return name + "- Hello !";
+    }
+
+}
+```
 
 
-#### Gitee Feature
-
-1. You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2. Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3. Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4. The most valuable open source project [GVP](https://gitee.com/gvp)
-5. The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6. The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
